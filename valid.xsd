@@ -1,0 +1,64 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!-- Created with Liquid Technologies Online Tools 1.0 (https://www.liquid-technologies.com) -->
+<xs:schema attributeFormDefault="unqualified" elementFormDefault="qualified" xmlns:xs="http://www.w3.org/2001/XMLSchema">
+  <xs:element name="DEPARTMENTS">
+    <xs:complexType>
+      <xs:sequence>
+        <xs:element maxOccurs="unbounded" name="University">
+          <xs:complexType>
+            <xs:sequence>
+              <xs:element maxOccurs="unbounded" name="item">
+                <xs:complexType mixed="true">
+                  <xs:sequence>
+                    <xs:element name="name">
+                      <xs:complexType>
+                        <xs:attribute name="lan" use="required" >
+                        <xs:simpleType>
+                                <xs:restriction base="xs:string">
+                                    <xs:pattern value = "İngilizce|Türkçe"/>
+                                </xs:restriction>
+                            </xs:simpleType>
+                          </xs:attribute>
+                        <xs:attribute name="second" type="xs:string" use="required" />
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="scholarship" >
+                        <xs:simpleType>
+                            <xs:restriction base="xs:string">
+                                <xs:pattern value = "100|75|50|25|0"/>
+                            </xs:restriction>
+                        </xs:simpleType>
+                    </xs:element>
+                    <xs:element name="period" type="xs:unsignedByte" />
+                    <xs:element name="quota">
+                      <xs:complexType>
+                        <xs:simpleContent>
+                          <xs:extension base="xs:unsignedByte">
+                            <xs:attribute name="spec" type="xs:string" use="required" />
+                          </xs:extension>
+                        </xs:simpleContent>
+                      </xs:complexType>
+                    </xs:element>
+                    <xs:element name="field" type="xs:string" />
+                    <xs:element name="last_min_score" type="xs:string" />
+                    <xs:element name="last_min_place" type="xs:string" />
+                  </xs:sequence>
+                  <xs:attribute name="id" type="xs:unsignedInt" use="required" />
+                  <xs:attribute name="faculty" type="xs:string" use="required" />
+                </xs:complexType>
+              </xs:element>
+            </xs:sequence>
+            <xs:attribute name="name" type="xs:string" use="required" />
+            <xs:attribute name="utype" use="required" >
+            <xs:simpleType>
+                    <xs:restriction base="xs:string">
+                        <xs:pattern value = "Devlet|Vakıf"/>
+                    </xs:restriction>
+                </xs:simpleType>
+              </xs:attribute>
+          </xs:complexType>
+        </xs:element>
+      </xs:sequence>
+    </xs:complexType>
+  </xs:element>
+</xs:schema>
